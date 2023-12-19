@@ -22,7 +22,7 @@ jobs:
       #     dotnet nuget add source --username ${{ secrets.QODANA_NUGET_USER }} --password ${{ secrets.QODANA_NUGET_URL }} --store-password-in-clear-text --name github ${{ secrets.QODANA_NUGET_URL }} --configfile nuget.config
 
       - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@v2023.3
+        uses: JetBrains/qodana-action@main
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
           QODANA_NUGET_URL: ${{ secrets.QODANA_NUGET_URL }}
