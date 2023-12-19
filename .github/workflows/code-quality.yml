@@ -16,17 +16,17 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-      - name: Add NuGet credentials
-        run: |
-          dotnet new nugetconfig
-          dotnet nuget add source --username ${{ secrets.QODANA_NUGET_USER }} --password ${{ secrets.QODANA_NUGET_URL }} --store-password-in-clear-text --name github ${{ secrets.QODANA_NUGET_URL }} --configfile nuget.config
+      # - name: Add NuGet credentials
+      #   run: |
+      #     dotnet new nugetconfig
+      #     dotnet nuget add source --username ${{ secrets.QODANA_NUGET_USER }} --password ${{ secrets.QODANA_NUGET_URL }} --store-password-in-clear-text --name github ${{ secrets.QODANA_NUGET_URL }} --configfile nuget.config
 
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2023.3
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
-      #    QODANA_NUGET_URL: ${{ secrets.QODANA_NUGET_URL }}
-      #    QODANA_NUGET_USER: ${{ secrets.QODANA_NUGET_USER }}
-      #    QODANA_NUGET_PASSWORD: ${{ secrets.QODANA_NUGET_PASSWORD }}
+          QODANA_NUGET_URL: ${{ secrets.QODANA_NUGET_URL }}
+          QODANA_NUGET_USER: ${{ secrets.QODANA_NUGET_USER }}
+          QODANA_NUGET_PASSWORD: ${{ secrets.QODANA_NUGET_PASSWORD }}
         with:
           upload-result: true

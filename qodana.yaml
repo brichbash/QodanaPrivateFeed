@@ -2,5 +2,3 @@
 linter: jetbrains/qodana-dotnet:2023.3
 dotnet:
     project: QodanaPrivateFeed.csproj
-bootstrap: |
-  mv /data/project/nuget.config /root/.nuget/NuGet/NuGet.Config
